@@ -1,0 +1,14 @@
+services:
+  runner:
+    image: docker.io/gitea/runner:5-dind
+    restart: always
+    privileged: true
+    environment:
+      GITEA_INSTANCE_URL: https://gitea.example.com
+      GITEA_RUNNER_REGISTRATION_TOKEN: <token>
+    volumes:
+      - ./data:/data
+      - runner-docker:/var/lib/docker
+
+volumes:
+  runner-docker:
