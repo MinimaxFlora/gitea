@@ -14,6 +14,9 @@ services:
       - USER_UID=1000
       - USER_GID=1000
       - GITEA__database__DB_TYPE=sqlite3
+      - GITEA__git_0X2E_timeout__MIGRATE=3600
+      - GITEA__git_0X2E_timeout__MIRROR=1800
+      - GITEA__git_0X2E_timeout__GC=60
     restart: always
     networks:
       - gitea
