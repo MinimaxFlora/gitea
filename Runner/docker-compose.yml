@@ -6,6 +6,7 @@ networks:
 services:
   runner:
     image: docker.io/gitea/runner:5-dind
+    container_name: runner
     privileged: true
     environment:
       GITEA_INSTANCE_URL: https://gitea.example.com
@@ -21,3 +22,4 @@ services:
 
 volumes:
   runner-docker:
+    name: runner
