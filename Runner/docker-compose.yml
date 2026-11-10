@@ -1,11 +1,20 @@
+networks:
+  runner:
+    external: false
+    name: runner
+    
 services:
   runner:
     image: docker.io/gitea/runner:5-dind
-    restart: always
     privileged: true
     environment:
       GITEA_INSTANCE_URL: https://gitea.example.com
       GITEA_RUNNER_REGISTRATION_TOKEN: <token>
+      GITEA_RUNNER_NAME: gitea-runner
+      GITEA_RUNNER_LABELS: "ubuntu-latest:docker://docker.gitea.com/runner-images:ubuntu-latest,ubuntu-26.04:docker://docker.gitea.com/runner-images:ubuntu-26.04,ubuntu-24.04:docker://docker.gitea.com/runner-images:ubuntu-24.04,ubuntu-22.04:docker://docker.gitea.com/runner-images:ubuntu-22.04"
+    restart: always
+    networks:
+      - runner
     volumes:
       - ./data:/data
       - runner-docker:/var/lib/docker
