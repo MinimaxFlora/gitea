@@ -2,6 +2,9 @@ networks:
   gitea:
     external: false
     name: gitea
+#  caddy:
+#    external: true
+#    name: caddy
 
 services:
   server:
@@ -14,6 +17,7 @@ services:
     restart: always
     networks:
       - gitea
+#      - caddy
     volumes:
       - ./gitea:/data
       - /etc/timezone:/etc/timezone:ro
