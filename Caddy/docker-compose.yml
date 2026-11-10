@@ -1,12 +1,19 @@
+networks:
+  caddy:
+    external: false
+    name: caddy
+    
 services:
   caddy:
     image: caddy:2.11.9
     container_name: caddy
-    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
       - "443:443/udp"
+    restart: always
+    networks:
+      - caddy
     volumes:
       - ./conf:/etc/caddy:ro
       - ./site:/srv:ro
