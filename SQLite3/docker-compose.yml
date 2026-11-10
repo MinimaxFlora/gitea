@@ -1,6 +1,7 @@
 networks:
   gitea:
     external: false
+    name: gitea
 
 services:
   server:
